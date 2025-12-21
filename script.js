@@ -160,3 +160,59 @@ document.head.appendChild(style);
 createParticles();
 
 console.log('SYC Winter Tournament Website Loaded! ⚡');
+
+.countdown-wrap{
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.countdown-title{
+  font-family: 'Rajdhani', sans-serif;
+  letter-spacing: 2px;
+  opacity: 0.9;
+  margin: 0;
+}
+
+.countdown{
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.time-box{
+  min-width: 90px;
+  padding: 14px 14px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.14);
+  backdrop-filter: blur(10px);
+  text-align: center;
+}
+
+.time-box .num{
+  display:block;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.time-box .label{
+  display:block;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 12px;
+  letter-spacing: 2px;
+  opacity: 0.8;
+  margin-top: 4px;
+}
+
+.countdown-note{
+  font-family: 'Rajdhani', sans-serif;
+  opacity: 0.75;
+  margin: 0;
+}
+
