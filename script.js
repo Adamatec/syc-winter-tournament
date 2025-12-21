@@ -161,58 +161,46 @@ createParticles();
 
 console.log('SYC Winter Tournament Website Loaded! ⚡');
 
-.countdown-wrap{
-  margin-top: 18px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
+function startCountdown() {
+  // Jan 24, 2026 18:30 in EET (UTC+2)
+  const target = new Date("2026-01-24T18:30:00+02:00").getTime();
+
+  const elDays = document.getElementById("cd-days");
+  const elHours = document.getElementById("cd-hours");
+  const elMins = document.getElementById("cd-mins");
+  const elSecs = document.getElementById("cd-secs");
+
+  if (!elDays || !elHours || !elMins || !elSecs) return; // countdown not on page
+
+  function pad(n){ return String(n).padStart(2, "0"); }
+
+  function tick() {
+    const now = Date.now();
+    let diff = target - now;
+
+    if (diff <= 0) {
+      elDays.textContent = "00";
+      elHours.textContent = "00";
+      elMins.textContent = "00";
+      elSecs.textContent = "00";
+      return;
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    diff %= (1000 * 60 * 60 * 24);
+    const hours = Math.floor(diff / (1000 * 60 * 60));
+    diff %= (1000 * 60 * 60);
+    const mins = Math.floor(diff / (1000 * 60));
+    const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+    elDays.textContent = pad(days);
+    elHours.textContent = pad(hours);
+    elMins.textContent = pad(mins);
+    elSecs.textContent = pad(secs);
+  }
+
+  tick();
+  setInterval(tick, 1000);
 }
 
-.countdown-title{
-  font-family: 'Rajdhani', sans-serif;
-  letter-spacing: 2px;
-  opacity: 0.9;
-  margin: 0;
-}
-
-.countdown{
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.time-box{
-  min-width: 90px;
-  padding: 14px 14px;
-  border-radius: 14px;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.14);
-  backdrop-filter: blur(10px);
-  text-align: center;
-}
-
-.time-box .num{
-  display:block;
-  font-family: 'Orbitron', sans-serif;
-  font-size: 28px;
-  font-weight: 900;
-  letter-spacing: 1px;
-}
-
-.time-box .label{
-  display:block;
-  font-family: 'Rajdhani', sans-serif;
-  font-size: 12px;
-  letter-spacing: 2px;
-  opacity: 0.8;
-  margin-top: 4px;
-}
-
-.countdown-note{
-  font-family: 'Rajdhani', sans-serif;
-  opacity: 0.75;
-  margin: 0;
-}
-
+document.addEventListener("DOMContentLoaded", startCountdown);
