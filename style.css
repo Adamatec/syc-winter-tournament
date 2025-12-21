@@ -414,3 +414,46 @@ function tick(){
 
 tick();
 setInterval(tick, 1000);
+
+                #countdown {
+    margin-top: 25px;
+    text-align: center;
+}
+
+.countdown-title {
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 2px;
+    color: #00eaff;
+    margin-bottom: 10px;
+}
+
+.countdown-timer {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.countdown-timer span {
+    background: rgba(0,0,0,0.5);
+    padding: 15px 18px;
+    border-radius: 10px;
+    min-width: 90px;
+}
+
+.countdown-timer b {
+    font-size: 28px;
+    color: #ffffff;
+    display: block;
+}
+
+.countdown-timer small {
+    font-size: 12px;
+    color: #aaa;
+}
+
+.countdown-date {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #ccc;
+}
+
