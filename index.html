@@ -32,6 +32,31 @@
         </div>
     </section>
 
+        <!-- Countdown Section -->
+    <section id="countdown-section">
+        <div class="container">
+            <h2 class="section-title">TOURNAMENT STARTS IN</h2>
+            <div id="countdown">
+                <div class="countdown-item">
+                    <span id="days" class="countdown-number">0</span>
+                    <span class="countdown-label">Days</span>
+                </div>
+                <div class="countdown-item">
+                    <span id="hours" class="countdown-number">0</span>
+                    <span class="countdown-label">Hours</span>
+                </div>
+                <div class="countdown-item">
+                    <span id="minutes" class="countdown-number">0</span>
+                    <span class="countdown-label">Minutes</span>
+                </div>
+                <div class="countdown-item">
+                    <span id="seconds" class="countdown-number">0</span>
+                    <span class="countdown-label">Seconds</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Teams Section -->
     <section id="teams">
         <h2 class="section-title">COMPETING TEAMS</h2>
@@ -242,6 +267,34 @@
     </section>
 
     <script src="script.js"></script>
+        <script>
+        // Set tournament start date - January 24, 2026 at 12:00 PM IST
+        const tournamentStart = new Date("2026-01-24T12:00:00+05:30").getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = tournamentStart - now;
+
+            if (distance < 0) {
+                document.getElementById("countdown").innerHTML = "<h2 style='color: #f4a261; font-size: 2rem;'>🏆 THE TOURNAMENT HAS STARTED! 🏆</h2>";
+                clearInterval(timerInterval);
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").textContent = days;
+            document.getElementById("hours").textContent = hours;
+            document.getElementById("minutes").textContent = minutes;
+            document.getElementById("seconds").textContent = seconds;
+        }
+
+        const timerInterval = setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
 </body>
 </html>
 
