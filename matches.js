@@ -1,147 +1,129 @@
-// Match database with all tournament matches
-const MATCHES_DB = {
-    1: {
-        id: 1,
-        team1: { name: "ARFAKSHAD", players: [
-            { name: "Player1", username: "arf_player1", matches: 500, winrate: "52%" },
-            { name: "Player2", username: "arf_player2", matches: 450, winrate: "48%" },
-            { name: "Player3", username: "arf_player3", matches: 600, winrate: "55%" },
-            { name: "Player4", username: "arf_player4", matches: 400, winrate: "50%" },
-            { name: "Player5", username: "arf_player5", matches: 550, winrate: "53%" }
-        ]},
-        team2: { name: "crackheads", players: [
-            { name: "Player1", username: "crack_player1", matches: 520, winrate: "51%" },
-            { name: "Player2", username: "crack_player2", matches: 480, winrate: "49%" },
-            { name: "Player3", username: "crack_player3", matches: 550, winrate: "54%" },
-            { name: "Player4", username: "crack_player4", matches: 420, winrate: "47%" },
-            { name: "Player5", username: "crack_player5", matches: 500, winrate: "52%" }
-        ]},
-        status: "upcoming",
-        server: "TBD",
-        map: "TBD",
-        type: "5v5 - EU"
-    },
-    2: {
-        id: 2,
-        team1: { name: "FANGS", players: [
-            { name: "Player1", username: "fangs_player1", matches: 480, winrate: "50%" },
-            { name: "Player2", username: "fangs_player2", matches: 520, winrate: "53%" },
-            { name: "Player3", username: "fangs_player3", matches: 490, winrate: "51%" },
-            { name: "Player4", username: "fangs_player4", matches: 510, winrate: "52%" },
-            { name: "Player5", username: "fangs_player5", matches: 500, winrate: "50%" }
-        ]},
-        team2: { name: "salafad", players: [
-            { name: "Player1", username: "sala_player1", matches: 470, winrate: "49%" },
-            { name: "Player2", username: "sala_player2", matches: 530, winrate: "54%" },
-            { name: "Player3", username: "sala_player3", matches: 450, winrate: "48%" },
-            { name: "Player4", username: "sala_player4", matches: 540, winrate: "55%" },
-            { name: "Player5", username: "sala_player5", matches: 500, winrate: "51%" }
-        ]},
-        status: "upcoming",
-        server: "TBD",
-        map: "TBD",
-        type: "5v5 - EU"
-    },
-    3: {
-        id: 3,
-        team1: { name: "SALAFAD", players: [
-            { name: "Player1", username: "sala_player1", matches: 470, winrate: "49%" },
-            { name: "Player2", username: "sala_player2", matches: 530, winrate: "54%" },
-            { name: "Player3", username: "sala_player3", matches: 450, winrate: "48%" },
-            { name: "Player4", username: "sala_player4", matches: 540, winrate: "55%" },
-            { name: "Player5", username: "sala_player5", matches: 500, winrate: "51%" }
-        ]},
-        team2: { name: "CRACKHEADS", players: [
-            { name: "Player1", username: "crack_player1", matches: 520, winrate: "51%" },
-            { name: "Player2", username: "crack_player2", matches: 480, winrate: "49%" },
-            { name: "Player3", username: "crack_player3", matches: 550, winrate: "54%" },
-            { name: "Player4", username: "crack_player4", matches: 420, winrate: "47%" },
-            { name: "Player5", username: "crack_player5", matches: 500, winrate: "52%" }
-        ]},
-        status: "upcoming",
-        server: "TBD",
-        map: "TBD",
-        type: "5v5 - EU"
-    }
+// TEAMS (same names as your site)
+const TEAMS = {
+  ARFAKSHAD: [
+    `🎯 Adam "Ad4matec" cohen`,
+    `🔥 Jad "spartixxx" cohen`,
+    `💀 Waseem "wesside" sadaka`,
+    `⚡ Asher "Asher" Cohen`,
+    `🛡️ Sam "Kreo" cohen`,
+  ],
+  SALAFAD: [
+    `❄️ Abood "kal" cohen`,
+    `🐺 Adel "kalypse" cohen`,
+    `🌨️ Atah "Coldi" cohen`,
+    `🧊 fuad "Hellsing" Altif`,
+    `⛄ Haroon "ophac" cohen`,
+    `🌟 Dan "Dune" Cohen`,
+  ],
+  FANGS: [
+    `🐉 Itsik "itsik" marhiv`,
+    `⚔️ isaac "sw1tch" Altif`,
+    `🔮 muard "bl1tzz" Altif`,
+    `🌟 reda "Virus" Altif`,
+    `💫 Atah "inatanel" cohen`,
+  ],
+  CRACKHEADS: [
+    `⛈️ Raed "Goldberg" altif`,
+    `🌩️ khaleel "v1per" altif`,
+    `🌪️ tawfeeq "tawfeeq" Marhiv`,
+    `☔ Yousef "DS" altif`,
+    `🌊 Hamdi "Sneax" altif`,
+  ],
 };
 
-// Get match ID from URL parameter
-function getMatchId() {
-    const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get('id') || '1';
-}
+// MATCHES (edit these anytime)
+const MATCHES = {
+  "arfakshad-vs-crackheads-2026-01-24": {
+    teamA: "ARFAKSHAD",
+    teamB: "CRACKHEADS",
+    date: "January 24, 2026",
+    time: "6:30 PM (EET)",
+    map: "TBD",
+    format: "BO1",
+    score: "TBD",
+    winner: "TBD",
+  },
+  "fangs-vs-salafad-2026-01-24": {
+    teamA: "FANGS",
+    teamB: "SALAFAD",
+    date: "January 24, 2026",
+    time: "7:30 PM (EET)",
+    map: "TBD",
+    format: "BO1",
+    score: "TBD",
+    winner: "TBD",
+  },
+  "arfakshad-vs-fangs-2026-01-31": {
+    teamA: "ARFAKSHAD",
+    teamB: "FANGS",
+    date: "January 31, 2026",
+    time: "6:30 PM (EET)",
+    map: "TBD",
+    format: "BO1",
+    score: "TBD",
+    winner: "TBD",
+  },
+  "salafad-vs-crackheads-2026-01-31": {
+    teamA: "SALAFAD",
+    teamB: "CRACKHEADS",
+    date: "January 31, 2026",
+    time: "7:30 PM (EET)",
+    map: "TBD",
+    format: "BO1",
+    score: "TBD",
+    winner: "TBD",
+  },
+  "arfakshad-vs-salafad-2026-02-07": {
+    teamA: "ARFAKSHAD",
+    teamB: "SALAFAD",
+    date: "February 07, 2026",
+    time: "6:30 PM (EET)",
+    map: "TBD",
+    format: "BO1",
+    score: "TBD",
+    winner: "TBD",
+  },
+  "crackheads-vs-fangs-2026-02-07": {
+    teamA: "CRACKHEADS",
+    teamB: "FANGS",
+    date: "February 07, 2026",
+    time: "6:30 PM (EET)",
+    map: "TBD",
+    format: "BO1",
+    score: "TBD",
+    winner: "TBD",
+  },
+};
 
-// Load match data and update page
-function loadMatchData() {
-    const matchId = getMatchId();
-    const match = MATCHES_DB[matchId];
-    
-    if (!match) {
-        document.body.innerHTML = '<h1 style="color:white;text-align:center;margin-top:100px;">Match not found</h1>';
-        return;
-    }
-    
-    // Update team names
-    document.getElementById('team1-name').textContent = match.team1.name;
-    document.getElementById('team2-name').textContent = match.team2.name;
-    
-    // Update match info
-    document.getElementById('match-type').textContent = match.type;
-    document.getElementById('server-region').textContent = match.server;
-    document.getElementById('map-name').textContent = match.map;
-    
-    // Handle match status
-    const statusEl = document.getElementById('match-status');
-    const team1ScoreEl = document.getElementById('team1-score');
-    const team2ScoreEl = document.getElementById('team2-score');
-    
-    if (match.status === 'upcoming') {
-        statusEl.textContent = 'UPCOMING';
-        statusEl.style.background = '#4dd9ff';
-        team1ScoreEl.textContent = '-';
-        team2ScoreEl.textContent = '-';
-    } else if (match.status === 'finished') {
-        statusEl.textContent = 'FINISHED';
-        statusEl.style.background = '#e76f51';
-        team1ScoreEl.textContent = match.score1 || '0';
-        team2ScoreEl.textContent = match.score2 || '0';
-    }
-    
-    // Update roster headers
-    document.querySelectorAll('.roster-header')[0].textContent = match.team1.name + ' Players';
-    document.querySelectorAll('.roster-header')[1].textContent = match.team2.name + ' Players';
-    
-    // Load player cards (simplified version)
-    document.getElementById('team1-players').innerHTML = match.team1.players.map(p => createPlayerCard(p)).join('');
-    document.getElementById('team2-players').innerHTML = match.team2.players.map(p => createPlayerCard(p)).join('');
-}
+function qs(id){ return document.getElementById(id); }
 
-function createPlayerCard(player) {
-    const initial = player.name.charAt(0).toUpperCase();
-    return `
-        <div class="player-card">
-            <div class="player-avatar">${initial}</div>
-            <div class="player-info">
-                <div class="player-name">${player.name}</div>
-                <div class="player-username">@${player.username}</div>
-            </div>
-            <div class="player-stats">
-                <div class="stat-item">
-                    <div class="stat-label">Matches</div>
-                    <div class="stat-value">${player.matches}</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-label">Win Rate</div>
-                    <div class="stat-value">${player.winrate}</div>
-                </div>
-            </div>
-        </div>
-    `;
-}
+const params = new URLSearchParams(window.location.search);
+const matchId = params.get("id");
 
-// Initialize on page load
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', loadMatchData);
+const match = MATCHES[matchId];
+
+if (!match) {
+  qs("matchTitle").textContent = "Match not found ❌";
 } else {
-    loadMatchData();
+  const title = `${match.teamA} vs ${match.teamB}`;
+  qs("matchTitle").textContent = title;
+
+  qs("teamAName").textContent = match.teamA;
+  qs("teamBName").textContent = match.teamB;
+
+  const info = qs("matchInfo");
+  info.innerHTML = `
+    <li><b>Date:</b> ${match.date}</li>
+    <li><b>Time:</b> ${match.time}</li>
+    <li><b>Map:</b> ${match.map}</li>
+    <li><b>Format:</b> ${match.format}</li>
+    <li><b>Score:</b> ${match.score}</li>
+    <li><b>Winner:</b> ${match.winner}</li>
+  `;
+
+  const aList = qs("teamAPlayers");
+  aList.innerHTML = (TEAMS[match.teamA] || []).map(p => `<li>${p}</li>`).join("");
+
+  const bList = qs("teamBPlayers");
+  bList.innerHTML = (TEAMS[match.teamB] || []).map(p => `<li>${p}</li>`).join("");
 }
