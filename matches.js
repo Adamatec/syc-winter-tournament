@@ -1,129 +1,195 @@
-// TEAMS (same names as your site)
-const TEAMS = {
-  ARFAKSHAD: [
-    `🎯 Adam "Ad4matec" cohen`,
-    `🔥 Jad "spartixxx" cohen`,
-    `💀 Waseem "wesside" sadaka`,
-    `⚡ Asher "Asher" Cohen`,
-    `🛡️ Sam "Kreo" cohen`,
-  ],
-  SALAFAD: [
-    `❄️ Abood "kal" cohen`,
-    `🐺 Adel "kalypse" cohen`,
-    `🌨️ Atah "Coldi" cohen`,
-    `🧊 fuad "Hellsing" Altif`,
-    `⛄ Haroon "ophac" cohen`,
-    `🌟 Dan "Dune" Cohen`,
-  ],
-  FANGS: [
-    `🐉 Itsik "itsik" marhiv`,
-    `⚔️ isaac "sw1tch" Altif`,
-    `🔮 muard "bl1tzz" Altif`,
-    `🌟 reda "Virus" Altif`,
-    `💫 Atah "inatanel" cohen`,
-  ],
-  CRACKHEADS: [
-    `⛈️ Raed "Goldberg" altif`,
-    `🌩️ khaleel "v1per" altif`,
-    `🌪️ tawfeeq "tawfeeq" Marhiv`,
-    `☔ Yousef "DS" altif`,
-    `🌊 Hamdi "Sneax" altif`,
-  ],
-};
-
-// MATCHES (edit these anytime)
-const MATCHES = {
-  "arfakshad-vs-crackheads-2026-01-24": {
-    teamA: "ARFAKSHAD",
-    teamB: "CRACKHEADS",
-    date: "January 24, 2026",
-    time: "6:30 PM (EET)",
-    map: "TBD",
-    format: "BO1",
-    score: "TBD",
-    winner: "TBD",
-  },
-  "fangs-vs-salafad-2026-01-24": {
-    teamA: "FANGS",
-    teamB: "SALAFAD",
-    date: "January 24, 2026",
-    time: "7:30 PM (EET)",
-    map: "TBD",
-    format: "BO1",
-    score: "TBD",
-    winner: "TBD",
-  },
-  "arfakshad-vs-fangs-2026-01-31": {
-    teamA: "ARFAKSHAD",
-    teamB: "FANGS",
-    date: "January 31, 2026",
-    time: "6:30 PM (EET)",
-    map: "TBD",
-    format: "BO1",
-    score: "TBD",
-    winner: "TBD",
-  },
-  "salafad-vs-crackheads-2026-01-31": {
-    teamA: "SALAFAD",
-    teamB: "CRACKHEADS",
-    date: "January 31, 2026",
-    time: "7:30 PM (EET)",
-    map: "TBD",
-    format: "BO1",
-    score: "TBD",
-    winner: "TBD",
-  },
-  "arfakshad-vs-salafad-2026-02-07": {
-    teamA: "ARFAKSHAD",
-    teamB: "SALAFAD",
-    date: "February 07, 2026",
-    time: "6:30 PM (EET)",
-    map: "TBD",
-    format: "BO1",
-    score: "TBD",
-    winner: "TBD",
-  },
-  "crackheads-vs-fangs-2026-02-07": {
-    teamA: "CRACKHEADS",
-    teamB: "FANGS",
-    date: "February 07, 2026",
-    time: "6:30 PM (EET)",
-    map: "TBD",
-    format: "BO1",
-    score: "TBD",
-    winner: "TBD",
-  },
-};
-
-function qs(id){ return document.getElementById(id); }
-
+// Get match id from URL
 const params = new URLSearchParams(window.location.search);
 const matchId = params.get("id");
 
-const match = MATCHES[matchId];
+// Teams and players
+const teams = {
+  ARFAKSHAD: [
+    'Adam "Ad4matec" Cohen',
+    'Jad "spartixxx" Cohen',
+    'Waseem "wesside" Sadaka',
+    'Asher "Asher" Cohen',
+    'Sam "Kreo" Cohen'
+  ],
+  SALAFAD: [
+    'Abood "kal" Cohen',
+    'Adel "kalypse" Cohen',
+    'Atah "Coldi" Cohen',
+    'Fuad "Hellsing" Altif',
+    'Haroon "ophac" Cohen'
+  ],
+  FANGS: [
+    'Itsik "itsik" Marhiv',
+    'Isaac "sw1tch" Altif',
+    'Muard "bl1tzz" Altif',
+    'Reda "Virus" Altif',
+    'Atah "inatanel" Cohen'
+  ],
+  CRACKHEADS: [
+    'Raed "Goldberg" Altif',
+    'Khaleel "v1per" Altif',
+    'Tawfeeq "Tawfeeq" Marhiv',
+    'Yousef "DS" Altif',
+    'Hamdi "Sneax" Altif'
+  ]
+};
 
-if (!match) {
-  qs("matchTitle").textContent = "Match not found ❌";
-} else {
-  const title = `${match.teamA} vs ${match.teamB}`;
-  qs("matchTitle").textContent = title;
+// Matches (no results yet)
+const matches = {
+  1: {
+    title: "TEAM ARFAKSHAD vs TEAM CRACKHEADS",
+    date: "January 24, 2026",
+    time: "6:30 PM EET",
+    map: "TBD",
+    format: "BO1",
+    teamAKey: "ARFAKSHAD",
+    teamBKey: "CRACKHEADS"
+  },
+  2: {
+    title: "TEAM FANGS vs TEAM SALAFAD",
+    date: "January 24, 2026",
+    time: "7:30 PM EET",
+    map: "TBD",
+    format: "BO1",
+    teamAKey: "FANGS",
+    teamBKey: "SALAFAD"
+  },
+  3: {
+    title: "TEAM ARFAKSHAD vs TEAM FANGS",
+    date: "January 31, 2026",
+    time: "6:30 PM EET",
+    map: "TBD",
+    format: "BO1",
+    teamAKey: "ARFAKSHAD",
+    teamBKey: "FANGS"
+  },
+  4: {
+    title: "TEAM SALAFAD vs TEAM CRACKHEADS",
+    date: "January 31, 2026",
+    time: "7:30 PM EET",
+    map: "TBD",
+    format: "BO1",
+    teamAKey: "SALAFAD",
+    teamBKey: "CRACKHEADS"
+  },
+  5: {
+    title: "TEAM ARFAKSHAD vs TEAM SALAFAD",
+    date: "February 7, 2026",
+    time: "6:30 PM EET",
+    map: "TBD",
+    format: "BO1",
+    teamAKey: "ARFAKSHAD",
+    teamBKey: "SALAFAD"
+  },
+  6: {
+    title: "TEAM CRACKHEADS vs TEAM FANGS",
+    date: "February 7, 2026",
+    time: "7:30 PM EET",
+    map: "TBD",
+    format: "BO1",
+    teamAKey: "CRACKHEADS",
+    teamBKey: "FANGS"
+  },
+  7: {
+    title: "TEAM CRACKHEADS vs TEAM ARFAKSHAD",
+    date: "February 14, 2026",
+    time: "6:30 PM EET",
+    map: "TBD",
+    format: "BO1",
+    teamAKey: "CRACKHEADS",
+    teamBKey: "ARFAKSHAD"
+  },
+  8: {
+    title: "TEAM SALAFAD vs TEAM FANGS",
+    date: "February 14, 2026",
+    time: "7:30 PM EET",
+    map: "TBD",
+    format: "BO1",
+    teamAKey: "SALAFAD",
+    teamBKey: "FANGS"
+  },
+  9: {
+    title: "TEAM FANGS vs TEAM ARFAKSHAD",
+    date: "February 21, 2026",
+    time: "6:30 PM EET",
+    map: "TBD",
+    format: "BO1",
+    teamAKey: "FANGS",
+    teamBKey: "ARFAKSHAD"
+  },
+  10: {
+    title: "TEAM CRACKHEADS vs TEAM SALAFAD",
+    date: "February 21, 2026",
+    time: "7:30 PM EET",
+    map: "TBD",
+    format: "BO1",
+    teamAKey: "CRACKHEADS",
+    teamBKey: "SALAFAD"
+  },
+  11: {
+    title: "TEAM SALAFAD vs TEAM ARFAKSHAD",
+    date: "February 28, 2026",
+    time: "6:30 PM EET",
+    map: "TBD",
+    format: "BO1",
+    teamAKey: "SALAFAD",
+    teamBKey: "ARFAKSHAD"
+  },
+  12: {
+    title: "TEAM FANGS vs TEAM CRACKHEADS",
+    date: "February 28, 2026",
+    time: "7:30 PM EET",
+    map: "TBD",
+    format: "BO1",
+    teamAKey: "FANGS",
+    teamBKey: "CRACKHEADS"
+  }
+};
 
-  qs("teamAName").textContent = match.teamA;
-  qs("teamBName").textContent = match.teamB;
+function renderMatch() {
+  const match = matches[matchId];
 
-  const info = qs("matchInfo");
-  info.innerHTML = `
-    <li><b>Date:</b> ${match.date}</li>
-    <li><b>Time:</b> ${match.time}</li>
-    <li><b>Map:</b> ${match.map}</li>
-    <li><b>Format:</b> ${match.format}</li>
-    <li><b>Score:</b> ${match.score}</li>
-    <li><b>Winner:</b> ${match.winner}</li>
-  `;
+  const matchTitle = document.getElementById("matchTitle");
+  const matchInfo = document.getElementById("matchInfo");
+  const teamAName = document.getElementById("teamAName");
+  const teamBName = document.getElementById("teamBName");
+  const teamAPlayers = document.getElementById("teamAPlayers");
+  const teamBPlayers = document.getElementById("teamBPlayers");
 
-  const aList = qs("teamAPlayers");
-  aList.innerHTML = (TEAMS[match.teamA] || []).map(p => `<li>${p}</li>`).join("");
+  if (!match) {
+    matchTitle.textContent = "Match not found";
+    matchInfo.innerHTML = "<li>Invalid match ID.</li>";
+    return;
+  }
 
-  const bList = qs("teamBPlayers");
-  bList.innerHTML = (TEAMS[match.teamB] || []).map(p => `<li>${p}</li>`).join("");
+  // Title
+  matchTitle.textContent = match.title;
+
+  // Info (no result yet)
+  matchInfo.innerHTML = "";
+  matchInfo.innerHTML += `<li><strong>Date:</strong> ${match.date}</li>`;
+  matchInfo.innerHTML += `<li><strong>Time:</strong> ${match.time}</li>`;
+  matchInfo.innerHTML += `<li><strong>Map:</strong> ${match.map}</li>`;
+  matchInfo.innerHTML += `<li><strong>Format:</strong> ${match.format}</li>`;
+  matchInfo.innerHTML += `<li><strong>Status:</strong> UPCOMING</li>`;
+
+  // Teams and players
+  teamAName.textContent = match.title.split(" vs ")[0];
+  teamBName.textContent = match.title.split(" vs ")[1];
+
+  teamAPlayers.innerHTML = "";
+  (teams[match.teamAKey] || []).forEach(p => {
+    const li = document.createElement("li");
+    li.textContent = p;
+    teamAPlayers.appendChild(li);
+  });
+
+  teamBPlayers.innerHTML = "";
+  (teams[match.teamBKey] || []).forEach(p => {
+    const li = document.createElement("li");
+    li.textContent = p;
+    teamBPlayers.appendChild(li);
+  });
 }
+
+renderMatch();
