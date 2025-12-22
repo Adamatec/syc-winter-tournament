@@ -1,335 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Match Details - SYC Winter Tournament</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        .match-container {
-            max-width: 1400px;
-            margin: 100px auto 50px;
-            padding: 20px;
-        }
-
-        .match-header {
-            background: rgba(10, 14, 39, 0.8);
-            border: 2px solid #e76f51;
-            border-radius: 15px;
-            padding: 30px;
-            margin-bottom: 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .team-section {
-            text-align: center;
-            flex: 1;
-        }
-
-        .team-name {
-            font-size: 2rem;
-            color: #4dd9ff;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-
-        .team-score {
-            font-size: 3rem;
-            color: #f4a261;
-            font-weight: 700;
-        }
-
-        .match-info {
-            text-align: center;
-            flex: 0.5;
-        }
-
-        .match-type {
-            font-size: 1.5rem;
-            color: #fff;
-            margin-bottom: 10px;
-        }
-
-        .match-status {
-            background: #e76f51;
-            color: #fff;
-            padding: 8px 20px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            display: inline-block;
-        }
-
-        .server-info {
-            background: rgba(10, 14, 39, 0.6);
-            border: 1px solid #444;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 40px;
-            display: flex;
-            justify-content: space-around;
-        }
-
-        .server-item {
-            text-align: center;
-        }
-
-        .server-label {
-            color: #999;
-            font-size: 0.9rem;
-            margin-bottom: 5px;
-        }
-
-        .server-value {
-            color: #4dd9ff;
-            font-size: 1.2rem;
-            font-weight: 600;
-        }
-
-        .teams-roster {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin-top: 40px;
-        }
-
-        .team-roster {
-            background: rgba(10, 14, 39, 0.8);
-            border: 2px solid #444;
-            border-radius: 15px;
-            padding: 30px;
-        }
-
-        .roster-header {
-            font-size: 1.8rem;
-            color: #f4a261;
-            margin-bottom: 20px;
-            text-align: center;
-            font-weight: 700;
-        }
-
-        .player-card {
-            background: rgba(0, 0, 0, 0.5);
-            border: 1px solid #555;
-            border-radius: 10px;
-            padding: 15px;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            transition: all 0.3s;
-        }
-
-        .player-card:hover {
-            border-color: #4dd9ff;
-            transform: translateX(5px);
-        }
-
-        .player-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #e76f51, #f4a261);
-            margin-right: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            color: #fff;
-            font-weight: 700;
-        }
-
-        .player-info {
-            flex: 1;
-        }
-
-        .player-name {
-            color: #4dd9ff;
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        .player-username {
-            color: #999;
-            font-size: 0.9rem;
-        }
-
-        .player-stats {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-            margin-left: 20px;
-        }
-
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-label {
-            color: #666;
-            font-size: 0.75rem;
-            margin-bottom: 3px;
-        }
-
-        .stat-value {
-            color: #fff;
-            font-size: 0.95rem;
-            font-weight: 600;
-        }
-
-        @media (max-width: 768px) {
-            .teams-roster {
-                grid-template-columns: 1fr;
-            }
-            
-            .match-header {
-                flex-direction: column;
-                gap: 20px;
-            }
-            
-            .player-stats {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Match Details</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <span class="logo-icon">⚡</span>
-                <span class="logo-text">SYC</span>
-            </div>
-            <ul class="nav-links">
-                <li><a href="index.html">HOME</a></li>
-                <li><a href="index.html#teams">TEAMS</a></li>
-                <li><a href="index.html#rules">RULES</a></li>
-                <li><a href="index.html#schedule">SCHEDULE</a></li>
-                <li><a href="index.html#standings">STANDINGS</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <div class="match-container">
-        <div class="match-header">
-            <div class="team-section">
-                <div class="team-name" id="team1-name">Team Adamatec</div>
-                <div class="team-score" id="team1-score">13</div>
-            </div>
-            <div class="match-info">
-                <div class="match-type" id="match-type">5v5 - EU</div>
-                <div class="match-status" id="match-status">Finished</div>
-            </div>
-            <div class="team-section">
-                <div class="team-name" id="team2-name">Team OnlyTry</div>
-                <div class="team-score" id="team2-score">11</div>
-            </div>
-        </div>
-
-        <div class="server-info">
-            <div class="server-item">
-                <div class="server-label">Server</div>
-                <div class="server-value" id="server-region">France</div>
-            </div>
-            <div class="server-item">
-                <div class="server-label">Map</div>
-                <div class="server-value" id="map-name">Mirage</div>
-            </div>
-        </div>
-
-        <div class="teams-roster">
-            <div class="team-roster">
-                <h2 class="roster-header">Team Adamatec Players</h2>
-                <div id="team1-players"></div>
-            </div>
-            <div class="team-roster">
-                <h2 class="roster-header">Team OnlyTry Players</h2>
-                <div id="team2-players"></div>
-            </div>
-        </div>
+  <nav class="navbar">
+    <div class="container">
+      <div class="logo">⚡ SYC WINTER</div>
+      <ul class="nav-links">
+        <li><a href="index.html#schedule">BACK</a></li>
+        <li><a href="index.html#teams">TEAMS</a></li>
+        <li><a href="index.html#rules">RULES</a></li>
+      </ul>
     </div>
+  </nav>
 
-    <script>
-        // Sample match data
-        const matchData = {
-            team1: {
-                name: "team_Adamatec",
-                score: 13,
-                players: [
-                    { name: "Adamatec", username: "Adamatec", matches: 1649, winrate: "37%", kills: 17, kd: "1.00", kr: "0.74", adr: "83.58", hs: "43%" },
-                    { name: "KalipTo", username: "IcTL", matches: 1009, winrate: "53%", kills: 17, kd: "1.06", kr: "0.73", adr: "77.84", hs: "46%" },
-                    { name: "v1p3r", username: "v1p3r", matches: 806, winrate: "53%", kills: 15, kd: "1.00", kr: "0.70", adr: "78.00", hs: "50%" },
-                    { name: "Sw1tch", username: "i", matches: 780, winrate: "43%", kills: 15, kd: "1.00", kr: "0.94", adr: "71.96", hs: "57%" },
-                    { name: "FLUZioN1", username: "filipjoneas81", matches: 1129, winrate: "53%", kills: 15, kd: "0.88", kr: "0.67", adr: "74.04", hs: "48%" }
-                ]
-            },
-            team2: {
-                name: "team_onlytry",
-                score: 11,
-                players: [
-                    { name: "onlytry", username: "Tenacity", matches: 409, winrate: "33%", kills: 18, kd: "1.06", kr: "0.81", adr: "87.92", hs: "42%" },
-                    { name: "Zap1nqr", username: "Last 30 days: 18800", matches: 418, winrate: "37%", kills: 14, kd: "0.93", kr: "0.68", adr: "74.60", hs: "45%" },
-                    { name: "HuyaDANKING", username: "muvusideqml", matches: 387, winrate: "37%", kills: 16, kd: "1.07", kr: "0.74", adr: "79.29", hs: "47%" },
-                    { name: "shipmiibb", username: "Egoceles_tom", matches: 1500, winrate: "50%", kills: 16, kd: "0.78", kr: "0.65", adr: "77.03", hs: "56%" },
-                    { name: "Steppzz", username: "ExplicitFazze", matches: 1315, winrate: "50%", kills: 16, kd: "0.78", kr: "0.68", adr: "86.11", hs: "66%" }
-                ]
-            },
-            server: "France",
-            map: "Mirage",
-            type: "5v5 - EU",
-            status: "Finished"
-        };
+  <section style="padding-top: 90px;">
+    <div class="container">
+      <h2 class="section-title" id="matchTitle">MATCH DETAILS</h2>
 
-        function createPlayerCard(player) {
-            const initial = player.name.charAt(0).toUpperCase();
-            return `
-                <div class="player-card">
-                    <div class="player-avatar">${initial}</div>
-                    <div class="player-info">
-                        <div class="player-name">${player.name}</div>
-                        <div class="player-username">@${player.username}</div>
-                    </div>
-                    <div class="player-stats">
-                        <div class="stat-item">
-                            <div class="stat-label">Matches</div>
-                            <div class="stat-value">${player.matches}</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-label">Win Rate</div>
-                            <div class="stat-value">${player.winrate}</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-label">Kills</div>
-                            <div class="stat-value">${player.kills}</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-label">K/D</div>
-                            <div class="stat-value">${player.kd}</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-label">K/R</div>
-                            <div class="stat-value">${player.kr}</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-label">ADR</div>
-                            <div class="stat-value">${player.adr}</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-label">HS%</div>
-                            <div class="stat-value">${player.hs}</div>
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
+      <div class="rules-container" style="margin-top: 20px;">
+        <div class="rule-card" style="text-align:left;">
+          <h3>📌 Match Info</h3>
+          <ul id="matchInfo"></ul>
+        </div>
 
-        function loadMatchData() {
-            document.getElementById('team1-players').innerHTML = matchData.team1.players.map(p => createPlayerCard(p)).join('');
-            document.getElementById('team2-players').innerHTML = matchData.team2.players.map(p => createPlayerCard(p)).join('');
-        }
+        <div class="rule-card" style="text-align:left;">
+          <h3 id="teamAName">Team A</h3>
+          <ul id="teamAPlayers"></ul>
+        </div>
 
-        loadMatchData();
-    </script>
+        <div class="rule-card" style="text-align:left;">
+          <h3 id="teamBName">Team B</h3>
+          <ul id="teamBPlayers"></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="match.js"></script>
 </body>
 </html>
