@@ -115,7 +115,8 @@ section {
 
 .hero-title {
     font-family: 'Orbitron', sans-serif;
-    font-size: 4rem;
+    409
+    ;
     font-weight: 900;
     color: #00d9ff;
     text-shadow: 0 0 40px rgba(0, 217, 255, 0.8);
@@ -406,14 +407,11 @@ tbody td {
 }
 
 .countdown-number {
-    font-size: 4rem;
+    font-size: 2.5rem;
     font-weight: 700;
-    color: #fff;
-    background: linear-gradient(135deg, #e76f51 0%, #f4a261 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 10px;
+    color: #4dd9ff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
 .countdown-label {
@@ -429,8 +427,7 @@ tbody td {
     }
     
     .countdown-number {
-        font-size: 3rem;
-    }
+        font-size: 2rem;    }
     
     .countdown-item {
         min-width: 80px;
