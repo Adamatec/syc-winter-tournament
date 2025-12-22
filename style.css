@@ -438,3 +438,15 @@ tbody td {
     }
 }
 
+/* Match Link Styling */
+.match-link {
+    text-decoration: none;
+    display: block;
+    color: inherit;
+    transition: all 0.3s ease;
+}
+
+.match-link:hover .match {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(231, 111, 81, 0.3);
+}
