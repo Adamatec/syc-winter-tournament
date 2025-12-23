@@ -224,18 +224,13 @@ section {
     backdrop-filter: blur(10px);
     border: 2px solid #ff007f;
     border-radius: 15px;
-    padding: 1.5rem;
-    margin-bottom: 1.5rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: all 0.3s ease;
+    padding: 2rem;    margin-bottom: 2rem;    transition: all 0.3s ease;
     box-shadow: 0 8px 32px rgba(255, 0, 127, 0.2);
+        text-align: left;
 }
 
 .match:hover {
-    transform: translateX(10px);
-    box-shadow: 0 10px 40px rgba(255, 0, 127, 0.4);
+    transform: translateY(-8px);    box-shadow: 0 10px 40px rgba(255, 0, 127, 0.4);
 }
 
 .match-info {
@@ -243,22 +238,21 @@ section {
 }
 
 .match-teams {
-    font-size: 1.3rem;
-    font-weight: 700;
+    font-size: 1.5rem;    font-weight: 700;
     color: #fff;
-    margin-bottom: 0.5rem;
-}
+    margin-bottom: 1rem;}
 
 .match-date {
     color: #aaa;
-    font-size: 1rem;
-}
+    font-size: 1.1rem;}
 
 .match-status {
     padding: 10px 20px;
     border-radius: 25px;
     font-weight: 700;
     font-size: 0.9rem;
+        margin-top: 1rem;
+        display: inline-block;
 }
 
 .match-status.upcoming {
