@@ -284,6 +284,17 @@ section {
     background: radial-gradient(circle at 50% 70%, rgba(0, 255, 127, 0.1) 0%, transparent 70%);
 }
 
+.match-time {
+        font-family: 'Orbitron', sans-serif;
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: #00d9ff;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        text-shadow: 0 0 15px rgba(0, 217, 255, 0.5);
+        margin-bottom: 1rem;
+    }
+
 .standings-table {
     width: 100%;
     max-width: 800px;
