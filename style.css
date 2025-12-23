@@ -220,12 +220,12 @@ section {
 }
 
 .match {
-    background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(10px);
-    border: 2px solid #ff007f;
-    border-radius: 15px;
-    padding: 2rem;    margin-bottom: 2rem;    transition: all 0.3s ease;
-    box-shadow: 0 8px 32px rgba(255, 0, 127, 0.2);
+    border: 3px solid transparent;    border-radius: 15px;
+        background-image: linear-gradient(rgba(26, 31, 58, 0.95), rgba(26, 31, 58, 0.95)), linear-gradient(135deg, #00d9ff, #8a2be2, #ff007f);
+        background-origin: border-box;
+        background-clip: padding-box, border-box;
+    box-shadow: 0 10px 40px rgba(0, 217, 255, 0.3), 0 0 60px rgba(138, 43, 226, 0.2), inset 0 0 50px rgba(255, 0, 127, 0.05);
         text-align: left;
 }
 
@@ -244,6 +244,11 @@ section {
 
 .match-date {
     color: #aaa;
+        font-family: 'Orbitron', sans-serif;
+        letter-spacing: 1px;
+        font-weight: 600;
+        text-transform: uppercase;
+        text-shadow: 0 0 10px rgba(0, 217, 255, 0.4);
     font-size: 1.1rem;}
 
 .match-status {
