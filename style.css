@@ -219,7 +219,7 @@ section {
     max-width: 900px;
 }
 
-.match {
+.match-card {
     backdrop-filter: blur(10px);
         padding: 2rem;
         border-radius: 15px;
@@ -373,7 +373,7 @@ tbody td {
         gap: 1rem;
     }
     
-    .match {
+    .match-card {
         flex-direction: column;
         gap: 1rem;
     }
@@ -448,7 +448,7 @@ tbody td {
     transition: all 0.3s ease;
 }
 
-.match-link:hover .match {
+.match-link:hover .match-card {
     transform: translateY(-5px);
     box-shadow: 0 8px 20px rgba(231, 111, 81, 0.3);
 }
