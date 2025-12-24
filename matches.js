@@ -147,49 +147,54 @@ const matches = {
 };
 
 function renderMatch() {
-  const match = matches[matchId];
+    const match = matches[matchId];
 
-  const matchTitle = document.getElementById("matchTitle");
-  const matchInfo = document.getElementById("matchInfo");
-  const teamAName = document.getElementById("teamAName");
-  const teamBName = document.getElementById("teamBName");
-  const teamAPlayers = document.getElementById("teamAPlayers");
-  const teamBPlayers = document.getElementById("teamBPlayers");
+    // Get all the new HTML elements
+    const matchStatus = document.getElementById("matchStatus");
+    const matchDate = document.getElementById("matchDate");
+    const matchTime = document.getElementById("matchTime");
+    const matchMap = document.getElementById("matchMap");
+    const matchFormat = document.getElementById("matchFormat");
+    const teamAName = document.getElementById("teamAName");
+    const teamBName = document.getElementById("teamBName");
+    const teamAPlayers = document.getElementById("teamAPlayers");
+    const teamBPlayers = document.getElementById("teamBPlayers");
 
-  if (!match) {
-    matchTitle.textContent = "Match not found";
-    matchInfo.innerHTML = "<li>Invalid match ID.</li>";
-    return;
-  }
+    if (!match) {
+        matchStatus.textContent = "ERROR";
+        matchDate.textContent = "Match not found";
+        return;
+    }
 
-  // Title
-  matchTitle.textContent = match.title;
+    // Set match info
+    matchStatus.textContent = "UPCOMING";
+    matchDate.textContent = match.date;
+    matchTime.textContent = match.time;
+    matchMap.textContent = match.map;
+    matchFormat.textContent = match.format;
 
-  // Info (no result yet)
-  matchInfo.innerHTML = "";
-  matchInfo.innerHTML += `<li><strong>Date:</strong> ${match.date}</li>`;
-  matchInfo.innerHTML += `<li><strong>Time:</strong> ${match.time}</li>`;
-  matchInfo.innerHTML += `<li><strong>Map:</strong> ${match.map}</li>`;
-  matchInfo.innerHTML += `<li><strong>Format:</strong> ${match.format}</li>`;
-  matchInfo.innerHTML += `<li><strong>Status:</strong> UPCOMING</li>`;
+    // Set team names (clean version without TEAM prefix)
+    const teamNames = match.title.split(" vs ");
+    teamAName.textContent = teamNames[0];
+    teamBName.textContent = teamNames[1];
 
-  // Teams and players
-  teamAName.textContent = match.title.split(" vs ")[0];
-  teamBName.textContent = match.title.split(" vs ")[1];
+    // Render Team A players with glowing dots
+    teamAPlayers.innerHTML = "";
+    (teams[match.teamAKey] || []).forEach(p => {
+        const li = document.createElement("li");
+        li.className = "player-item";
+        li.innerHTML = `<div class="player-icon"></div>${p}`;
+        teamAPlayers.appendChild(li);
+    });
 
-  teamAPlayers.innerHTML = "";
-  (teams[match.teamAKey] || []).forEach(p => {
-    const li = document.createElement("li");
-    li.textContent = p;
-    teamAPlayers.appendChild(li);
-  });
-
-  teamBPlayers.innerHTML = "";
-  (teams[match.teamBKey] || []).forEach(p => {
-    const li = document.createElement("li");
-    li.textContent = p;
-    teamBPlayers.appendChild(li);
-  });
+    // Render Team B players with glowing dots
+    teamBPlayers.innerHTML = "";
+    (teams[match.teamBKey] || []).forEach(p => {
+        const li = document.createElement("li");
+        li.className = "player-item";
+        li.innerHTML = `<div class="player-icon"></div>${p}`;
+        teamBPlayers.appendChild(li);
+    });
 }
 
 renderMatch();
