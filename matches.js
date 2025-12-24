@@ -230,13 +230,28 @@ const matchStats = {
 
 // Function to render scoreboard when available
 function renderScoreboard() {
+    const match = matches[matchId];
+    if (!match) return;
+
+    // Set team names
+    document.getElementById('scoreboardTeamAName').textContent = teamNames[0];
+    document.getElementById('scoreboardTeamBName').textContent = teamNames[1];
+
     if (!matchStats[matchId]) {
-        // No stats yet, show placeholder
+        // No stats yet, but show player names
         document.getElementById('finalScore').innerHTML = '<span style="font-size: 1.2rem; color: #64748b;">Match not played yet</span>';
-        document.getElementById('scoreboardTeamAName').textContent = 'AWAITING MATCH RESULTS';
-        document.getElementById('scoreboardTeamBName').textContent = 'AWAITING MATCH RESULTS';
-        document.getElementById('statsTeamA').innerHTML = '<tr><td colspan="6" style="text-align: center; padding: 20px;">Stats will be available after the match</td></tr>';
-        document.getElementById('statsTeamB').innerHTML = '<tr><td colspan="6" style="text-align: center; padding: 20px;">Stats will be available after the match</td></tr>';
+        
+        // Render Team A players with placeholder stats
+        const teamAPlayers = teams[match.teamAKey] || [];
+        document.getElementById('statsTeamA').innerHTML = teamAPlayers.map(player => 
+            `<tr><td>${player}</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>`
+        ).join('');
+        
+        // Render Team B players with placeholder stats
+        const teamBPlayers = teams[match.teamBKey] || [];
+        document.getElementById('statsTeamB').innerHTML = teamBPlayers.map(player => 
+            `<tr><td>${player}</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>`
+        ).join('');
     }
 }
 
