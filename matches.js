@@ -198,3 +198,46 @@ function renderMatch() {
 }
 
 renderMatch();
+
+// Scoreboard toggle functionality
+const scoreboardToggle = document.getElementById('scoreboardToggle');
+const scoreboardContainer = document.getElementById('scoreboardContainer');
+const toggleIcon = document.getElementById('toggleIcon');
+
+if (scoreboardToggle) {
+    scoreboardToggle.addEventListener('click', function() {
+        scoreboardContainer.classList.toggle('active');
+        if (scoreboardContainer.classList.contains('active')) {
+            scoreboardContainer.style.display = 'block';
+            toggleIcon.textContent = '📊';
+            scoreboardToggle.innerHTML = `<span id="toggleIcon">📊</span> Hide Scoreboard`;
+        } else {
+            setTimeout(() => {
+                scoreboardContainer.style.display = 'none';
+            }, 500);
+            toggleIcon.textContent = '📊';
+            scoreboardToggle.innerHTML = `<span id="toggleIcon">📊</span> View Scoreboard`;
+        }
+    });
+}
+
+// Sample stats data (you can update these after matches are played)
+const matchStats = {
+    // For now, all matches show "No stats available yet"
+    // After matches, you can add real data like:
+    // 1: { scoreA: 16, scoreB: 14, statsA: [...], statsB: [...] }
+};
+
+// Function to render scoreboard when available
+function renderScoreboard() {
+    if (!matchStats[matchId]) {
+        // No stats yet, show placeholder
+        document.getElementById('finalScore').innerHTML = '<span style="font-size: 1.2rem; color: #64748b;">Match not played yet</span>';
+        document.getElementById('scoreboardTeamAName').textContent = 'AWAITING MATCH RESULTS';
+        document.getElementById('scoreboardTeamBName').textContent = 'AWAITING MATCH RESULTS';
+        document.getElementById('statsTeamA').innerHTML = '<tr><td colspan="6" style="text-align: center; padding: 20px;">Stats will be available after the match</td></tr>';
+        document.getElementById('statsTeamB').innerHTML = '<tr><td colspan="6" style="text-align: center; padding: 20px;">Stats will be available after the match</td></tr>';
+    }
+}
+
+renderScoreboard();
