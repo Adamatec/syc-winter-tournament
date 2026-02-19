@@ -10,10 +10,11 @@ const teams = {
     'Waseem "wesside" Sadaka',
     'Asher "Asher" Cohen',
     'Sam "Kreo" Cohen'
+    'Azmi "Silencio" Cohen'
   ],
   SALAFAD: [
     'Abood "kal" Cohen',
-    'Adel "kalypse" Cohen',
+    'khader "zero" Cohen',
     'Atah "Coldi" Cohen',
     'Fuad "Hellsing" Altif',
     'Haroon "ophac" Cohen'
